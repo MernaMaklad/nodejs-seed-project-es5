@@ -1,7 +1,3 @@
-require('../models/Product');
-require('../models/User');
-
-
 var mongoose = require('mongoose'),
   config = require('../config/Config'),
   dburl = config.MONGO_URI;
@@ -47,32 +43,19 @@ process.on('SIGTERM', function() {
   });
 });
 
-mongoose.connect(dburl, function(err,db) {
+mongoose.connect(dburl, function(err) {
   if (!err) {
-    //return console.log('Successfully connected to the database');
-    console.log('Successfully connected to the database');
-    // var myobj = { email:'sandra@gmail.com',username: "sandra", password: "12345",passwordConf: "12345" };
-    // db.collection("User").insertOne(myobj, function(err, res) {
-    //   if (err) throw err;
-    //   console.log("1 document inserted");
-    //   console.log(res)
-    //   db.close();
-    // });
-
+    return console.log('Successfully connected to the database');
   }
   console.error(err);
   gracefulShutdown(function(err) {
     if (err) {
-      //return console.error(err);
-      console.log('hena')
-      console.error(err);
-      console.log('Could not connect to database');
-      process.exit(0);
+      return console.error(err);
     }
-    
+    console.log('Could not connect to database');
+    process.exit(0);
   });
-
-
-
 });
 
+require('../models/Product');
+require('../models/User');

@@ -7,16 +7,14 @@ var mongoose = require('mongoose'),
 
   module.exports.createUser = function(req, res, next) {
     var valid =
-      req.body.email &&
-      Validations.isString(req.body.email) &&
       req.body.username &&
-      Validations.isString(req.body.username)
+      Validations.isString(req.body.username) &&
       req.body.password &&
       Validations.isString(req.body.password);
     if (!valid) {
       return res.status(422).json({
         err: null,
-        msg: 'name(String) and price(Number) are required fields.',
+        msg: req.body.username+' '+req.body.password+' '+'name(String) and password(string) are required fields.',
         data: null
       });
     }
@@ -24,14 +22,14 @@ var mongoose = require('mongoose'),
     delete req.body.createdAt;
     delete req.body.updatedAt;
   
-    Product.create(req.body, function(err, product) {
+    User.create(req.body, function(err, user) {
       if (err) {
         return next(err);
       }
       res.status(201).json({
         err: null,
-        msg: 'Product was created successfully.',
-        data: product
+        msg: 'user was created successfully.',
+        data: user
       });
     });
   };
