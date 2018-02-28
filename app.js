@@ -44,7 +44,7 @@ app.use(function(err, req, res, next) {
 app.use(function(req, res) {
   res.status(404).json({
     err: null,
-    msg: '404 Not Found',
+    msg: '31 Says 404 Not Found',
     data: null
   });
 });

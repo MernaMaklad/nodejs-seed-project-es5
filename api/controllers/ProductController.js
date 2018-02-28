@@ -41,6 +41,15 @@ module.exports.getProducts = function(req, res, next) {
   });
 };
 
+module.exports.getPProducts = function(req, res, next) {
+  res.status(200).json({
+    err: null,
+    msg: '31 Products retrieved successfully.',
+    data: 
+      [ "Ford", "BMW", "Fiat" ] 
+    
+  });
+};
 module.exports.getProductsBelowPrice = function(req, res, next) {
   if (!Validations.isNumber(req.params.price)) {
     return res.status(422).json({
