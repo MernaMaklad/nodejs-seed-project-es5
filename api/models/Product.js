@@ -16,7 +16,25 @@ var productSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  updatedAt: Date
+  updatedAt: Date,
+  
+  userId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    required: true 
+  },
+  seller_name:{
+    type: String,
+    required: true,
+  },
+  component:{
+    type: Number,
+    required: true
+  }
+
 });
+
+
+
+
 
 mongoose.model('Product', productSchema);

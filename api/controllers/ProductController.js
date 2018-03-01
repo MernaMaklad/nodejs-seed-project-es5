@@ -41,15 +41,15 @@ module.exports.getProducts = function(req, res, next) {
   });
 };
 
-module.exports.getPProducts = function(req, res, next) {
-  res.status(200).json({
-    err: null,
-    msg: '31 Products retrieved successfully.',
-    data: 
-      [ "Ford", "BMW", "Fiat" ] 
+// module.exports.getPProducts = function(req, res, next) {
+//   res.status(200).json({
+//     err: null,
+//     msg: '31 Products retrieved successfully.',
+//     data: 
+//       [ "Ford", "BMW", "Fiat" ] 
     
-  });
-};
+//   });
+// };
 module.exports.getProductsBelowPrice = function(req, res, next) {
   if (!Validations.isNumber(req.params.price)) {
     return res.status(422).json({
@@ -83,6 +83,12 @@ module.exports.createProduct = function(req, res, next) {
     Validations.isString(req.body.name) &&
     req.body.price &&
     Validations.isNumber(req.body.price);
+    req.body.userId &&
+    Validations.isObjectId(req.body.userId);
+    req.body.seller_name &&
+    Validations.isString(req.body.seller_name);
+    req.body.component &&
+    Validations.isNumber(req.body.component);
   if (!valid) {
     return res.status(422).json({
       err: null,

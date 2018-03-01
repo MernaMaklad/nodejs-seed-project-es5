@@ -10,8 +10,11 @@ var userSchema = mongoose.Schema({
       password: {
         type: String,
         required: true,
+      },
+      component: {
+        type: Number,
+        required: true
+
       }
 });
-
-var User = mongoose.model('User', userSchema);
-module.exports = User;
+mongoose.model('User', userSchema);
