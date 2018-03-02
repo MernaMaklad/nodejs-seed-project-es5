@@ -28,17 +28,30 @@ var mongoose = require('mongoose'),
     //req.body.password=Encryptions.hashPassword(req.body.password,function(){
       
     //});
+    User.findOne({
+      username: req.body.username.trim().toLowerCase(),
+      
+    }, function(err, user) {
+  
 
-    User.create(req.body, function(err, user) {
-      if (err) {
-        return next(err);
+      if (user) {
+        res.json({ success: false, message: 'Username already taken' });
+      } else{
+        User.create(req.body, function(err, user) {
+          if (err) {
+            return next(err);
+          }
+          res.status(201).json({
+            err: null,
+            msg: 'user was created successfully.',
+            data: user
+          });
+        });
       }
-      res.status(201).json({
-        err: null,
-        msg: 'user was created successfully.',
-        data: user
-      });
+    
+  
     });
+   
   };
   // Login
   module.exports.Login = function(req, res, next) {
@@ -56,24 +69,28 @@ var mongoose = require('mongoose'),
     }
   
     User.findOne({
-        username: req.body.username.trim().toLowerCase()
+        username: req.body.username.trim().toLowerCase(),
+        password: req.body.password
       }, function(err, user) {
     
-        if (err) throw err;
-    
+        // if (err) throw err;
+ 
         if (!user) {
           res.json({ success: false, message: 'Login failed. User not found.' });
-        } else {
-    
-          // check if password matches
-          if (Encryptions.comparePasswordToHash(user.password, req.body.password.trim().toLowerCase())) {
-            res.json({ success: false, message: 'Login failed. Wrong password.' });
-          } else {
-
-            res.json({ success: true, message: 'Logged in successfully' ,jwt_token:"to be generated",user_id:user.id,user_name:user.username,user_component:user.component});
-          }  
-    
+        } else{
+          res.json({ success: true, message: 'Logged in successfully' ,jwt_token:"to be generated",user_id:user.id,user_name:user.username,user_component:user.component});
         }
+        // else {
+    
+        //   // check if password matches
+        //   if ((Encryptions.comparePasswordToHash(user.password, req.body.password.trim().toLowerCase()))) {
+        //     res.json({ success: false, message: user +'Login failed. Wrong password.' });
+        //   } else {
+
+        //     res.json({ success: true, message: 'Logged in successfully' ,jwt_token:"to be generated",user_id:user.id,user_name:user.username,user_component:user.component});
+        //   }  
+    
+        // }
     
       });
   };

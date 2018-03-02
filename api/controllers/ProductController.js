@@ -160,7 +160,7 @@ module.exports.updateProduct = function(req, res, next) {
 };
 
 module.exports.deleteProduct = function(req, res, next) {
-  if (!Validations.isObjectId(req.params.productId)) {
+  if (!Validations.isObjectId(mongoose.Types.ObjectId(req.params.productId))) {
     return res.status(422).json({
       err: null,
       msg: 'productId parameter must be a valid ObjectId.',
