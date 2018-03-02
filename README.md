@@ -1,4 +1,4 @@
-![](src/assets/logo.jpg)
+![](/logo.jpg)
 # Project Title
 
 Sprint 1
@@ -29,6 +29,6 @@ An e-commerce website developed by 31-DMET using MEAN stack.
 ## About
 
 
-The Repo contains the Angular Frontend files for the project.
+The Repo contains the Node Backend files for the project.
 
 wa shokran :bowtie:
