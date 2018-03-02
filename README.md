@@ -1,17 +1,34 @@
-# nodejs-seed-project-es5
+![](src/assets/logo.jpg)
+# Project Title
 
-A starter Node.js backend RESTful API using ES5.
+Sprint 1
 
-## Technology:
+## Getting Started
 
-* Node.js v8+
-* Express.js v4
-* MongoDB
+An e-commerce website developed by 31-DMET using MEAN stack.
 
-## How to run?
 
-1. Clone the repo.
-2. npm install
-3. npm start
+## Authors
 
-&#9400; Omar Doma 2018
+| Name         | ID      |
+| ------------ | ------- |
+| Hadeel Abbas | 31-5586 |
+| Youstina Melek | 31-2363 |
+| Merna Maklad | 31-3000 |
+| Amr Attia | 31-12272 |
+| Nagham Asharf | 31-1058 |
+| Ahmed Ashour | 31-7631 |
+| Zyad Zakria | 31-0935 |
+| Omar Ehab | 31-5003 |
+| Mary Hany | 31-2403 |
+| Monica Bassem | 31-1542 |
+| Sandra Sameh | 31-0657 |
+
+
+
+## About
+
+
+The Repo contains the Angular Frontend files for the project.
+
+wa shokran :bowtie:
